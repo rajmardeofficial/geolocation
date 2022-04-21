@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live tracking app</title>
+  </head>
+  <body>
+    <button id="start" onclick="checkLocation()">Start</button>
+    <ul>
+      <li id="list"></li>
+    </ul>
+    <script>
+      const position = [];
+      function checkLocation() {
+        navigator.geolocation.watchPosition(
+          (success) => {
+            // position.push(
+            //   `${success.coords.latitude}, ${success.coords.longitude}`
+            // );
+            // console.log(position);
+
+            // for (let i = 0; i < position.length; i++) {
+            //   document.getElementById("list").innerHTML = position[i];
+            // }
+            alert(`${success.coords.latitude} and ${success.coords.longitude}`)
+          },
+          (err) => {
+            if (err) throw err;
+          },
+          {
+            enableHighAccuracy: true,
+          }
+        );
+      }
+    </script>
+  </body>
+</html>
